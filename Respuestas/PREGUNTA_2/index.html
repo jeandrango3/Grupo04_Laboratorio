@@ -12,20 +12,20 @@
     <div>
       <img id="background" src="../../Imagenes/fondo.jpg"/> 
     </div>
-    <div id="fixed" style="padding-left:30%; padding-top: 10%;">	
-      <br>	
+    <div id="fixed" style="padding-left:30%; padding-top: 10%;">  
+      <br>  
       <img src="../../Imagenes/selloespe.jpg" width="65%" align="center">
       <h1 style="padding-left:25%;">Pregunta 2</h1>
       <p>2) Desarrollar la función CargarDatos(), para desplegar el contenido (Asincrónico) de un archivo XML:</p>
       <ul style="list-style-type: none;">
         <li>xhttp = new XMLHttpRequest();<br>
-		  xhttp.onreadystatechange = function() {;<br>
-		     if (this.readyState == 4 && this.status == 200) {;<br>
+      xhttp.onreadystatechange = function() {;<br>
+         if (this.readyState == 4 && this.status == 200) {;<br>
                  document.getElementById("demo").innerHTML = ; <br>
-		          this.responseText; <br>
-			 }; <br>
-		   }; ;<br>
-		  xhttp.open("GET", "Texto.txt", true);<br>
+              this.responseText; <br>
+       }; <br>
+       }; ;<br>
+      xhttp.open("GET", "Texto.txt", true);<br>
           xhttp.send();<br>
         </li>
       </ul>
@@ -56,10 +56,15 @@
   
   //Funcion para recuperar los datos del archivo .txt
   function CargarDatos() {
+  var xmlDoc = xhttp.responseXML;
+  var i;
+  var x = xmlDoc.getElementsByTagName("nombre");
   
-    
-    
+  for (i = 0; i <x.length; i++) {
+    document.getElementById("resolucion").innerHTML += xmlDoc.getElementsByTagName("nombre")[i].childNodes[0].nodeValue+" come "+xmlDoc.getElementsByTagName("comida")[i].childNodes[0].nodeValue+"<br>";
   }
+  }
+
   
 </script>
 
