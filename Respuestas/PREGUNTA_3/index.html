@@ -39,11 +39,18 @@ function change_myselect(sel) {
   xmlhttp = new XMLHttpRequest();
   
   
-  xmlhttp.onreadystatechange = function() {
-    
+  xmlhttp.onload = function() {
+    myObj = JSON.parse(this.responseText);
+    text = "<table border='1'>"
+    for (x in myObj) {
+      text += "<tr><td>" + myObj[x].name + "</td></tr>";
+    }
+    text += "</table>"    
+    document.getElementById("demo").innerHTML = text;
+  
 	
 	
-    };
+  }
 	
 	
   xmlhttp.open("GET", "./ListaPeliculas.json", true);
